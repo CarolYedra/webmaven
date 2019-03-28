@@ -1,0 +1,5 @@
+es\avalon\web\controller\acciones\ListaLibrosAccion.class
+es\avalon\web\controller\acciones\InsertarLibroAccion.class
+es\avalon\web\controller\acciones\Accion.class
+es\avalon\web\controller\ServletControladorFrontal.class
+es\avalon\web\controller\acciones\FormularioLibroInsertar.class
