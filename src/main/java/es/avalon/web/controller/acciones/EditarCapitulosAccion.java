@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Capitulo;
 
-import es.avalon.repositorios.CapitulosRepositorioJPA;
+
+import es.avalon.servicios.ServicioLibros;
 
 
 
@@ -19,13 +20,11 @@ public class EditarCapitulosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		Capitulo repo = new ServicioLibros().buscarUnoCapitulo(request.getParameter("titulo"));
+		request.setAttribute("capitulo", repo);
+		despachar(request, response, "formularioEditarCapitulo.jsp");
 
-		
-			Capitulo repo = new CapitulosRepositorioJPA().buscarUno(request.getParameter("titulo"));
-			request.setAttribute("capitulos", repo);
-			despachar(request, response, "formularioEditarCapitulo.jsp");
-		
-			
+
 	}
 
 }

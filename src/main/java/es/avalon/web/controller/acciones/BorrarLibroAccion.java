@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.LibroRepositorioJPA;
+
+import es.avalon.servicios.ServicioLibros;
 
 
 
@@ -19,9 +20,9 @@ public class BorrarLibroAccion extends Accion {
 			throws ServletException, IOException {
 		
 		Libro milibro = new Libro(request.getParameter("titulo"));
-		LibroRepositorioJPA repo =new LibroRepositorioJPA();
-		repo.borrar(milibro);
-		List<Libro> lista= repo.buscarTodos();
+		ServicioLibros serv=new ServicioLibros();
+		serv.borrarLibro(milibro);
+		List<Libro> lista= serv.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 		

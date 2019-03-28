@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Capitulo;
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.CapitulosRepositorioJPA;
-import es.avalon.repositorios.LibroRepositorioJPA;
+
+import es.avalon.servicios.ServicioLibros;
 
 public class InsertarCapitulosAccion extends Accion {
 
@@ -18,14 +18,13 @@ public class InsertarCapitulosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		LibroRepositorioJPA repolibro = new LibroRepositorioJPA();
-		CapitulosRepositorioJPA repocap= new CapitulosRepositorioJPA();
+		ServicioLibros serv=new ServicioLibros();
 		
-		Libro libro=repolibro.buscarUno(request.getParameter("libroTitulo"));
+		Libro libro=serv.buscarUnoLibro(request.getParameter("libroTitulo"));
 		Capitulo c = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("paginas")), libro);
 		c.setLibro(libro);
 		
-		repocap.insertar(c);
+		serv.insertarCapitulo(c);
 		
 //		request.setAttribute("listaCapitulos", repocap.buscarTodosParaUnLibro(libro));
 //		despachar(request, response, "listadoCapitulos.jsp");

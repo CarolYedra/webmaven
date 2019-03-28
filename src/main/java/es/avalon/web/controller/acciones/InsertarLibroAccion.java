@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.LibroRepositorioJPA;
+
+import es.avalon.servicios.ServicioLibros;
 
 
 
@@ -22,9 +23,9 @@ public class InsertarLibroAccion extends Accion {
 		Libro libro = new Libro(request.getParameter("titulo"), request.getParameter("autor"),
 				Integer.parseInt(request.getParameter("pagina")));
 		
-		LibroRepositorioJPA repo= new LibroRepositorioJPA();
-		repo.insertar(libro);
-		List<Libro> lista = new LibroRepositorioJPA().buscarTodos();
+		ServicioLibros serv=new ServicioLibros();
+		serv.insertarLibro(libro);
+		List<Libro> lista = serv.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 

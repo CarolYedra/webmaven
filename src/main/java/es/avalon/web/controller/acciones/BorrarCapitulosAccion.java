@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Capitulo;
 
-import es.avalon.repositorios.CapitulosRepositorioJPA;
+
+import es.avalon.servicios.ServicioLibros;
 
 
 public class BorrarCapitulosAccion extends Accion {
@@ -18,8 +19,8 @@ public class BorrarCapitulosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		CapitulosRepositorioJPA repo= new CapitulosRepositorioJPA();
-		repo.borrar(new Capitulo(request.getParameter("titulo")));
+		ServicioLibros serv=new ServicioLibros();
+		serv.borrarCapitulo(new Capitulo(request.getParameter("titulo")));
 		
 		response.sendRedirect("ServletControladorFrontal?accion=listaCapitulos&titulo="+request.getParameter("libroTitulo"));
 		

@@ -40,7 +40,7 @@ tr:nth-child(even) {
 					href="ServletControladorFrontal?accion=borrarCapitulo&titulo=${capitulo.titulo}&libroTitulo=${param.titulo}" />
 					Borrar </a></td>
 				<td><a
-					href="ServletControladorFrontal?accion=formularioEditarCapitulo&titulo=${capitulo.titulo}" />
+					href="ServletControladorFrontal?accion=formularioEditarCapitulo&titulo=${capitulo.titulo}&libroTitulo=${param.titulo}" />
 					Editar </a></td>
 				
 			</tr>

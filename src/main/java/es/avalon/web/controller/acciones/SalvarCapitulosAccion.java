@@ -1,14 +1,16 @@
 package es.avalon.web.controller.acciones;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Capitulo;
-import es.avalon.repositorios.CapitulosRepositorioJPA;
+import es.avalon.jpa.negocio.Libro;
+
+import es.avalon.servicios.ServicioLibros;
 
 
 
@@ -17,16 +19,17 @@ public class SalvarCapitulosAccion extends Accion {
 	@Override
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-
-		Capitulo c = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("pagina")));
 		
-		CapitulosRepositorioJPA repository= new CapitulosRepositorioJPA();
-		repository.salvar(c);
+		ServicioLibros serv=new ServicioLibros();
+		//System.out.println(request.getParameter("titulo") + request.getParameter("libroTitulo") + request.getParameter("paginas"));
+		Libro libro=serv.buscarUnoLibro(request.getParameter("libroTitulo"));
 		
-		List<Capitulo> lista = repository.buscarTodos();
-		request.setAttribute("listaCapitulos", lista);
-		despachar(request, response, "listadoCapitulos.jsp");
+		Capitulo c = new Capitulo(request.getParameter("tituloOriginal"), Integer.parseInt(request.getParameter("paginas")), libro);
+		
+		
+		serv.salvarCapitulo(c);
+		
+		response.sendRedirect("ServletControladorFrontal?accion=listaCapitulos&titulo="+request.getParameter("libroTitulo"));
 		
 	}
 

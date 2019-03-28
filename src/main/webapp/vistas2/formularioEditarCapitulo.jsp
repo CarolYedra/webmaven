@@ -12,8 +12,10 @@
 <form action="ServletControladorFrontal">
 
 <p>Titulo: <input type="text" name="titulo" value="${capitulo.titulo}" /></p>
-<p>Pagina: <input type="text" name="pagina" value="${capitulo.pagina}"/></p>
+<p>Pagina: <input type="text" name="paginas" value="${capitulo.paginas}"/></p>
 <p><input type="submit" value="enviar"></p>
+
+<input name="tituloOriginal" type="hidden" value="${capitulo.titulo}" >
 <input type="hidden" name="accion" value= "salvarCapitulo"/>
 
 
