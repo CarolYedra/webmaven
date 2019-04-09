@@ -7,17 +7,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import es.avalon.jpa.negocio.Libro;
-
 import es.avalon.servicios.ServicioLibros;
-
+import es.avalon.servicios.impl.ServicioLibrosImpl;
+@Component
 public class OrdenarLibroAccion extends Accion {
+	
+	@Autowired
+	ServicioLibros miservicio;
 
 	@Override
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		List<Libro> lista = new ServicioLibros().buscarTodosOrdenadosLibro(request.getParameter("orden"));
+		List<Libro> lista = new ServicioLibrosImpl().buscarTodosOrdenadosLibro(request.getParameter("orden"));
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 

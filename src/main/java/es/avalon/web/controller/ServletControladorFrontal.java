@@ -1,12 +1,16 @@
 package es.avalon.web.controller;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import es.avalon.configuracion.ConfiguracionSpring;
 import es.avalon.web.controller.acciones.Accion;
 import es.avalon.web.controller.acciones.BorrarCapitulosAccion;
 import es.avalon.web.controller.acciones.BorrarLibroAccion;
@@ -27,42 +31,44 @@ public class ServletControladorFrontal extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext();
+		contexto.register(ConfiguracionSpring.class);
+		contexto.refresh();
+			
 		String tipoAccion = request.getParameter("accion");
 		Accion accion = null;
 		if (tipoAccion == null || tipoAccion.equals("")) {
-			accion = new ListaLibrosAccion();
+			accion = contexto.getBean(ListaLibrosAccion.class);
 		} else {
 			if (tipoAccion.equals("formularioInsertar")) {
-				accion = new FormularioLibroInsertar();
+			accion = contexto.getBean(FormularioLibroInsertar.class);
 			} else if (tipoAccion.equals("insertar")) {
-				accion = new InsertarLibroAccion();
+			accion = contexto.getBean(InsertarLibroAccion.class);
 			} else if (tipoAccion.equals("borrar")) {
-				accion = new BorrarLibroAccion();
+			accion = contexto.getBean(BorrarLibroAccion.class);
 			} else if (tipoAccion.equals("formularioEditar")) {
-				accion = new EditarLibroAccion();
+			accion = contexto.getBean(EditarLibroAccion.class);
 			} else if (tipoAccion.equals("salvar")) {
-				accion = new SalvarLibroAccion();
+			accion = contexto.getBean(SalvarLibroAccion.class);
 			} else if (tipoAccion.equals("ordenar")) {
-				accion = new OrdenarLibroAccion();
+			accion = contexto.getBean(OrdenarLibroAccion.class);
 			} else if (tipoAccion.equals("listaCapitulos")) {
-				accion = new ListaCapitulosAccion();
+			accion = contexto.getBean(ListaCapitulosAccion.class);
 			} else if (tipoAccion.equals("formularioInsertarCapitulo")) {
-				accion = new FormularioCapituloInsertar();
+			accion = contexto.getBean(FormularioCapituloInsertar.class);
 			} else if (tipoAccion.equals("insertarCapitulo")){
-				accion = new InsertarCapitulosAccion();
+			accion = contexto.getBean(InsertarCapitulosAccion.class);
 			} else if (tipoAccion.equals("borrarCapitulo")) {
-				accion = new BorrarCapitulosAccion();
+			accion = contexto.getBean(BorrarCapitulosAccion.class);
 			} else if (tipoAccion.equals("listadoLibros")) {
-				accion = new ListaLibrosAccion();
-				
+			accion = contexto.getBean(ListaLibrosAccion.class);
 			} else if (tipoAccion.equals("salvarCapitulo")) {
-				accion = new SalvarCapitulosAccion();
+			accion = contexto.getBean(SalvarCapitulosAccion.class);
 			} else if (tipoAccion.equals("formularioEditarCapitulo")) {
-				accion = new EditarCapitulosAccion();
+			accion = contexto.getBean(EditarCapitulosAccion.class);
 			}else {
-				
-			}
-		
+			}	
 		}
 		accion.ejecutar(request, response);
 	}
