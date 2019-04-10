@@ -7,19 +7,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  text-align: left;
-  padding: 8px;
-}
-tr:nth-child(even) {background-color: #f2f2f2;}
-</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel=stylesheet type="text/css" href="../resources/css/estilo.css"> 
+
 </head>
 <body>
 
@@ -35,20 +26,16 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 				<td>${libro.titulo}</td>
 				<td>${libro.autor}</td>
 				<td>${libro.pagina}</td>
-				<td><a 
-					href="ServletControladorFrontal?accion=borrar&titulo=${libro.titulo}" />
-					Borrar </a></td>
-				<td><a
-					href="ServletControladorFrontal?accion=formularioEditar&titulo=${libro.titulo}" />
-					Editar </a></td>
-				<td><a href="ServletControladorFrontal?accion=listaCapitulos&titulo=${libro.titulo}">ver capitulos</a></td>
+				<td><a href="borrar?titulo=${libro.titulo}" >	Borrar </a></td>
+				<td><a href="formularioEditar?titulo=${libro.titulo}" > Editar </a></td>
+				<td><a href="listaCapitulos?titulo=${libro.titulo}">ver capitulos</a></td>
 			</tr>
 		</c:forEach>
 
 
 	</table>
 
-	<a href="formularioInsertar"/> Insertar
+	<a href="formularioInsertar"> Insertar
 	</a>
 
 </body>

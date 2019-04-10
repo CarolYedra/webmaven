@@ -16,13 +16,21 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @ComponentScan("es.avalon")
 @EnableTransactionManagement
 @EnableWebMvc
-public class ConfiguracionSpring {
+public class ConfiguracionSpring implements WebMvcConfigurer{
+	
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	    registry
+	    .addResourceHandler("/resources/**")
+	    .addResourceLocations("/resources/"); 
+	    }
 
 	@Bean
 	public DataSource dataSource() {
@@ -39,11 +47,9 @@ public class ConfiguracionSpring {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
 		em.setPackagesToScan(new String[] { "es.avalon.jpa.negocio" });
-
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(additionalProperties());
-
 		return em;
 	}
 
@@ -51,21 +57,17 @@ public class ConfiguracionSpring {
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
-
 		return transactionManager;
 	}
 
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-
 		return properties;
 	}
-
-	  
-	    @Bean
-	     public InternalResourceViewResolver getInternalResourceViewResolver() {
+	
+	@Bean
+	public InternalResourceViewResolver getInternalResourceViewResolver() {
 	     System.out.println("llega");
 	     InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 	     resolver.setPrefix("/WEB-INF/vistas2/");

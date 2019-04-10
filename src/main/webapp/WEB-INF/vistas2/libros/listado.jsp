@@ -7,17 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  text-align: left;
-  padding: 8px;
-}
-tr:nth-child(even) {background-color: #f2f2f2;}
-</style>
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>

@@ -10,6 +10,7 @@
 
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel=stylesheet type="text/css" href="../resources/css/estilo.css"> 
 </head>
 <body>
 
@@ -24,17 +25,13 @@
 				
 				<td>${capitulo.titulo}</td>
 				<td>${capitulo.paginas}</td>
-				<td><a 
-					href="ServletControladorFrontal?accion=borrarCapitulo&titulo=${capitulo.titulo}&libroTitulo=${param.titulo}" />
-					Borrar </a></td>
-				<td><a
-					href="ServletControladorFrontal?accion=formularioEditarCapitulo&titulo=${capitulo.titulo}&libroTitulo=${param.titulo}" />
-					Editar </a></td>
+				<td><a href="borrarCapitulo?titulo=${capitulo.titulo}&libroTitulo=${param.titulo}" > Borrar </a></td>
+				<td><a href="formularioEditarCapitulo?titulo=${capitulo.titulo}&libroTitulo=${param.titulo}" >	Editar </a></td>
 				
 			</tr>
 		</c:forEach>
 	</table>
-<a href="ServletControladorFrontal?accion=formularioInsertarCapitulo&libroTitulo=${param.titulo}"/> Insertar </a>
-<a href="ServletControladorFrontal?accion=listadoLibros"/> Volver </a>
+<a href="formularioInsertarCapitulo?libroTitulo=${param.titulo}"> Insertar </a>
+<a href="listadoLibros"> Volver </a>
 </body>
 </html>
