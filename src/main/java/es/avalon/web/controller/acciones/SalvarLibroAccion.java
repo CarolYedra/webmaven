@@ -31,7 +31,7 @@ public class SalvarLibroAccion extends Accion {
 		
 		miservicio.salvarLibro(milibro);
 		
-		List<Libro> lista = miservicio.buscarTodosLosLibros();
+		Iterable<Libro> lista = miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 

@@ -30,7 +30,7 @@ public class InsertarLibroAccion extends Accion {
 		
 		//ServicioLibros serv=new ServicioLibrosInterface();
 		miservicio.insertarLibro(libro);
-		List<Libro> lista = miservicio.buscarTodosLosLibros();
+		Iterable<Libro> lista = miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 

@@ -29,7 +29,7 @@ public class BorrarLibroAccion extends Accion {
 		//Libro milibro = new Libro(request.getParameter("titulo"));
 		//ServicioLibros serv=new ServicioLibrosImpl();
 		miservicio.borrarLibro(new Libro(request.getParameter("titulo")));
-		List<Libro> lista= miservicio.buscarTodosLosLibros();
+		Iterable<Libro> lista= miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 		

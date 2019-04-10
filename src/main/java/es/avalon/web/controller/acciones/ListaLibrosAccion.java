@@ -22,7 +22,7 @@ public class ListaLibrosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Libro> lista = miservicio.buscarTodosLosLibros();
+		Iterable<Libro> lista = miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 		despachar(request, response, "listado.jsp");
 

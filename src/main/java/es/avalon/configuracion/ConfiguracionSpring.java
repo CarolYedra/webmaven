@@ -15,10 +15,13 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @ComponentScan("es.avalon")
 @EnableTransactionManagement
+@EnableWebMvc
 public class ConfiguracionSpring {
 
 	@Bean
@@ -60,4 +63,14 @@ public class ConfiguracionSpring {
 		return properties;
 	}
 
-}
+	  
+	    @Bean
+	     public InternalResourceViewResolver getInternalResourceViewResolver() {
+	     System.out.println("llega");
+	     InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+	     resolver.setPrefix("/WEB-INF/vistas2/");
+	     resolver.setSuffix(".jsp");
+	     return resolver;
+	 
+	    }
+	}

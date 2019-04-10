@@ -25,7 +25,7 @@ public class ListaCapitulosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Capitulo> lista = miservicio.buscarTodosParaUnLibroCapitulo(new Libro(request.getParameter("titulo")));
+		Iterable<Capitulo> lista = miservicio.buscarTodosParaUnLibroCapitulo(new Libro(request.getParameter("titulo")));
 		request.setAttribute("listaCapitulos", lista);
 		despachar(request, response, "listadoCapitulos.jsp");
 

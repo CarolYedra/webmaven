@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 
   <servlet>
     <description></description>
     <display-name>ServletControladorFrontal</display-name>
@@ -18,5 +19,6 @@
   <servlet-mapping>
     <servlet-name>ServletControladorFrontal</servlet-name>
     <url-pattern>/ServletControladorFrontal</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
+  -->
 </web-app>
