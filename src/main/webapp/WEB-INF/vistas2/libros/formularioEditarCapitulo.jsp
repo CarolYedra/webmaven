@@ -4,22 +4,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>EDITAR CAPITULO</title>
 </head>
 <body>
 
 
-<form action="ServletControladorFrontal">
+<form action="salvarcapitulo">
 
 <p>Titulo: <input type="text" name="titulo" value="${capitulo.titulo}" /></p>
 <p>Pagina: <input type="text" name="paginas" value="${capitulo.paginas}"/></p>
+
+<input type="hidden" name="libro_Titulo" value= "${param.libroTitulo}"/>
+
 <p><input type="submit" value="enviar"></p>
 
-<input name="tituloOriginal" type="hidden" value="${capitulo.titulo}" >
-<input type="hidden" name="accion" value= "salvarCapitulo"/>
+<%-- <input type="hidden" name="tituloOriginal" value="${capitulo.titulo}" > --%>
+<!-- <input type="hidden" name="accion" value= "salvarCapitulo"/>  -->
 
-
-<input type="hidden" name="libroTitulo" value= "${param.libroTitulo}"/>
 
 </form>
 

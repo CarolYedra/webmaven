@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>LIBROS</title>
 <link rel=stylesheet type="text/css" href="../resources/css/estilo.css"> 
 
 </head>
@@ -16,9 +16,10 @@
 
 	<table>
 		<tr>
-			<th><a href="ServletControladorFrontal?accion=ordenar&orden=titulo">Titulo</a></th>
-			<th><a href="ServletControladorFrontal?accion=ordenar&orden=autor">Autor</a></th>
-			<th><a href="ServletControladorFrontal?accion=ordenar&orden=paginas">Paginas</a></th>
+			<th><a href="ordenar?orden=titulo">Titulo</a></th>
+			<th><a href="ordenar?orden=autor">Autor</a></th>
+			<th><a href="ordenar?orden=paginas">Paginas</a></th>
+			
 		</tr>
 		<c:forEach items="${listaLibros}" var="libro">
 			<tr>
@@ -35,6 +36,7 @@
 
 	</table>
 
+	<a href="listaCategoria"> Categorias
 	<a href="formularioInsertar"> Insertar
 	</a>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>INSERTAR CAPITULO</title>
 </head>
 <body>
 
@@ -12,8 +12,9 @@
 
 <p><input type="submit" value="enviar"></p>
 
-
 <input type="hidden" name="Libro_Titulo" value= "${param.libroTitulo}"/> 
+
+
 </form>
 </body>
 </html>
