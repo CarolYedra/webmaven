@@ -30,7 +30,22 @@ public class CategoriaController {
 			modelo.addAttribute("listaCategoria",miservicio.buscarTodosCategoria());
 			return "libros/listaCategoria";
 		}
+		@RequestMapping("/verlibros")
 		
-	
+		public String verlibros(Model modelo, int id) {
+			Categoria c=miservicio.buscarTodosParaUnLibroCategoria(id);
+			modelo.addAttribute("listaLibros", c.getLibros());
+			return "libros/lista";
+		}
+		@RequestMapping("/listaLibrosQ")
+			public String listar(Model modelo, int categoriaId) {
+			modelo.addAttribute("listaLibros",miservicio.buscarLibrosPorCategoria(new Categoria(categoriaId)));
+			
+			return "libros/lista";
+		}
+		
+		
+		
+		
 		
 	}

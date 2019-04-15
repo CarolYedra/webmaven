@@ -19,20 +19,21 @@
 		<tr>
 			
 			<th>ID</th>
-			<th>Titulo</th>
+			<th>Nombre</th>
 
 		<c:forEach items="${listaCategoria}" var="categoria">
 			<tr>
 				
 				<td>${categoria.id}</td>
-				<td>${categoria.titulo}</td>
-				
+				<td>${categoria.nombre}</td>
+				<td><a href="verlibros?id=${categoria.id}">Ver libros</a></td>
+				<td><a href="listaLibrosQ?categoriaId=${categoria.id}">Ver lib</a></td>
+	
 		
 			</tr>
 		</c:forEach>
 	</table>
 
 
-<a href="lista"> Volver </a>
 </body>
 </html>

@@ -16,8 +16,8 @@
 
 	<table>
 		<tr>
-			<th><a href="ordenar?orden=titulo">Titulo</a></th>
-			<th><a href="ordenar?orden=autor">Autor</a></th>
+			<th><a href="ordenarPorTitulo">Titulo</a></th>
+			<th><a href="ordenarPorAutor">Autor</a></th>
 			<th><a href="ordenar?orden=paginas">Paginas</a></th>
 			
 		</tr>

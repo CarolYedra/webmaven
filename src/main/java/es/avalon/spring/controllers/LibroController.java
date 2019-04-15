@@ -66,11 +66,18 @@ public class LibroController {
 		modelo.addAttribute("listaLibros",miservicio.buscarTodosLosLibros());
 		return "libros/lista";
 	}
-	@RequestMapping("/ordenar")
-	
-	public String ordenar(@ModelAttribute Libro libro, Model modelo, String orden) {
-		modelo.addAttribute("listaLibros",miservicio.buscarTodosOrdenadosLibro(orden));
+	@RequestMapping("/ordenarPorTitulo")
+	public String ordenarPorTitulo( Model modelo) {
+		
+		modelo.addAttribute("listaLibros",miservicio.buscarLibrosOrdenadorPorTituloAsc());
 		return "libros/lista";
 	}
+	@RequestMapping("/ordenarPorAutor")
+	public String ordenarPorAutor(  Model modelo) {
+		modelo.addAttribute("listaLibros",miservicio.buscarLibrosOrdenadorPorAutorAsc());
+		return "libros/lista";
+	}
+	
+	
 	
 }
